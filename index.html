@@ -82,14 +82,13 @@
         </div>
     </div>
 
-    <!-- Adicionando o som de suspense -->
-    <audio id="suspense-sound" src="Suspense.mp3" loop></audio>
+    <!-- Adicionando música -->
+    <audio controls autoplay loop>
+        <source src="suspense.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 
     <script>
-        // Iniciar o som de suspense
-        var suspenseSound = document.getElementById("suspense-sound");
-        suspenseSound.play();
-
         // Data de destino
         var targetDate = new Date('November 30, 2025 00:00:00').getTime();
 
@@ -117,8 +116,6 @@
             if (difference < 0) {
                 clearInterval(timer);
                 document.getElementById('timer').innerHTML = 'EXPIRADO';
-                // Parar o som de suspense quando a contagem terminar
-                suspenseSound.pause();
             }
         }, 1000);
     </script>
