@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega do Apartamento Giovanni e Sara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .countdown {
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com transparência */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .countdown h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold; /* Negrito */
+            color: #000; /* Cor preta */
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .timer div {
+            margin: 0 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img src="C:\Users\giovanni.milani\Documents\GitHub\entrega-apartamento\predio.gif" alt="Imagem de um prédio animada">
+
+    <div class="countdown">
+        <h1 style="color: black; font-weight: bold;">ENTREGA APARTAMENTO</h1>
+        <div class="timer" id="timer"></div>
+    </div>
+
+    <script>
+        // Data de destino
+        var targetDate = new Date('November 30, 2025 00:00:00').getTime();
+
+        // Atualiza a contagem a cada segundo
+        var timer = setInterval(function() {
+            // Data e hora atuais
+            var currentDate = new Date().getTime();
+
+            // Diferença entre a data de destino e a data atual
+            var difference = targetDate - currentDate;
+
+            // Cálculos para dias, horas, minutos e segundos
+            var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Exibe a contagem regressiva na página
+            document.getElementById('timer').innerHTML = '<div>' + days + 'd</div>' +
+                                                          '<div>' + hours + 'h</div>' +
+                                                          '<div>' + minutes + 'm</div>' +
+                                                          '<div>' + seconds + 's</div>';
+
+            // Quando a contagem regressiva terminar
+            if (difference < 0) {
+                clearInterval(timer);
+                document.getElementById('timer').innerHTML = 'EXPIRADO';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
